@@ -1,5 +1,5 @@
 copy the project in your local server <br>
-excute your local server  <br>
+excuter your local server  <br>
 create database named "reservation"  <br>
 install composer https://getcomposer.org/  <br>
 open terminal   <br>
