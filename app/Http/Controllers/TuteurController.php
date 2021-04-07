@@ -336,6 +336,13 @@ class TuteurController extends Controller
         $timeStart = new DateTime($form['timeStart']);
         $timeEnd = new DateTime($form['timeEnd']);
 
+        $intersection = $this->isThereAnyIntersectionWithAnOtherSession(0, $timeStart, $timeEnd);
+        if ($intersection->bool) {
+            $success = false;
+            $msg = "Le nouveau session s'intersectionne avec un autre session [ " . $intersection->sessionsIDs . " ]";
+            return response()->json(['success' => $success, 'msg' => $msg]);
+        }
+        
         $session = Session::create([
             'date_id' => $DateID,
             'timeStart' => $timeStart,
